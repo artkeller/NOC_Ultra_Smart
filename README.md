@@ -1,3 +1,3 @@
-# NOC Ultra Snart
+# NOC Ultra Smart
 
 TBD
