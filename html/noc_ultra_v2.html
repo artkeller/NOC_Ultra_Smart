@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>NOC Ultra Smart</title>
+
+<style>
+body { font-family:Arial; background:#111; color:#eee; }
+.controls { margin-bottom:12px; }
+input { padding:6px; width:340px; }
+button { padding:6px 8px; margin-left:4px; cursor:pointer; }
+button:disabled { opacity:0.4; cursor:not-allowed; }
+
+.panel {
+  border:1px solid #333;
+  padding:8px;
+  margin-bottom:8px;
+  background:#1a1a1a;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  transition:background 0.4s;
+}
+
+.panel.changed { background:#2a2a00; }
+
+.left { display:flex; gap:8px; }
+
+.led {
+  width:14px;
+  height:14px;
+  border-radius:50%;
+  background:#555;
+  margin-top:4px;
+}
+
+.green { background:#00ff88; }
+.yellow { background:#ffd000; }
+.blue { background:#3aa0ff; }
+.gray { background:#666; }
+
+.red {
+  background:#ff3030;
+  animation:blink 1s infinite;
+}
+
+@keyframes blink {
+  0% { opacity:1; }
+  50% { opacity:0.2; }
+  100% { opacity:1; }
+}
+
+.status { font-size:12px; color:#aaa; }
+.stats { font-size:11px; color:#888; }
+
+canvas { background:#000; border:1px solid #333; margin-right:8px; }
+
+.favoriteRow { margin-bottom:4px; font-size:13px; }
+</style>
+</head>
+<body>
+
+<h2>NOC Ultra Smart</h2>
+
+<div class="controls">
+  <input id="urlInput" placeholder="https://example.com">
+  <button onclick="addURL()">Add</button>
+</div>
+
+<div class="controls">
+  <b>Favoriten</b>
+  <div id="favoritesList"></div>
+</div>
+
+<div id="monitors"></div>
+
+<script>
+
+let monitors=[];
+let intervalMs=5000;
+
+function isValidURL(str){
+  try{
+    const u=new URL(str);
+    return u.protocol==="http:"||u.protocol==="https:";
+  }catch{return false;}
+}
+
+function saveState(){
+  localStorage.setItem("noc_monitors",
+    JSON.stringify(monitors.map(m=>m.url)));
+}
+
+function loadState(){
+  const data=JSON.parse(localStorage.getItem("noc_monitors")||"[]");
+  data.forEach(url=>createAndStart(url));
+}
+
+function saveFavorites(list){
+  localStorage.setItem("noc_favorites",JSON.stringify(list));
+}
+
+function loadFavorites(){
+  return JSON.parse(localStorage.getItem("noc_favorites")||"[]");
+}
+
+function refreshFavoritesUI(){
+  const container=document.getElementById("favoritesList");
+  container.innerHTML="";
+  loadFavorites().forEach(url=>{
+    const row=document.createElement("div");
+    row.className="favoriteRow";
+
+    const startBtn=document.createElement("button");
+    startBtn.textContent="Start";
+    startBtn.onclick=()=>createAndStart(url);
+
+    const delBtn=document.createElement("button");
+    delBtn.textContent="✖";
+    delBtn.onclick=()=>{
+      saveFavorites(loadFavorites().filter(f=>f!==url));
+      refreshFavoritesUI();
+    };
+
+    row.appendChild(startBtn);
+    row.appendChild(delBtn);
+    row.appendChild(document.createTextNode(" "+url));
+    container.appendChild(row);
+  });
+}
+
+function statePriority(s){
+  return {red:0,yellow:1,blue:2,gray:3,green:4}[s]??5;
+}
+
+function sortPanels(){
+  monitors.sort((a,b)=>statePriority(a.state)-statePriority(b.state));
+  const c=document.getElementById("monitors");
+  monitors.forEach(m=>c.appendChild(m.div));
+}
+
+function drawGraph(m){
+  const ctx=m.canvas.getContext("2d");
+  const w=m.canvas.width;
+  const h=m.canvas.height;
+  ctx.clearRect(0,0,w,h);
+
+  if(m.history.length<2) return;
+
+  const values=m.history;
+  const min=Math.min(...values);
+  const max=Math.max(...values);
+  const avg=Math.round(values.reduce((a,b)=>a+b,0)/values.length);
+  const range=max-min||1;
+
+  // Gitter horizontal
+  ctx.strokeStyle="#111";
+  for(let i=1;i<=3;i++){
+    const y=(h-20)*(i/4);
+    ctx.beginPath();
+    ctx.moveTo(30,y);
+    ctx.lineTo(w-5,y);
+    ctx.stroke();
+  }
+
+  // Gitter vertikal (10s Raster)
+  const totalSec=Math.round(values.length*(intervalMs/1000));
+  const step=10;
+  for(let s=step;s<totalSec;s+=step){
+    const x=30 + (s/totalSec)*(w-40);
+    ctx.beginPath();
+    ctx.moveTo(x,5);
+    ctx.lineTo(x,h-20);
+    ctx.stroke();
+  }
+
+  // Achsen
+  ctx.strokeStyle="#333";
+  ctx.beginPath();
+  ctx.moveTo(30,5);
+  ctx.lineTo(30,h-20);
+  ctx.lineTo(w-5,h-20);
+  ctx.stroke();
+
+  ctx.fillStyle="#777";
+  ctx.font="10px Arial";
+  ctx.fillText(max+" ms",2,12);
+  ctx.fillText(min+" ms",2,h-22);
+  ctx.fillText(totalSec+"s",w-40,h-5);
+
+  // Kurve
+  ctx.beginPath();
+  values.forEach((v,i)=>{
+    const x=30+i*((w-40)/values.length);
+    const y=(h-20)-((v-min)/range)*(h-30);
+    if(i===0) ctx.moveTo(x,y);
+    else ctx.lineTo(x,y);
+  });
+
+  ctx.strokeStyle="#00ff88";
+  ctx.stroke();
+
+  m.statsDiv.textContent=
+    "Min:"+min+" | Max:"+max+" | Avg:"+avg+" ms";
+}
+
+function setState(m,state,text){
+  if(m.state!==state){
+    m.div.classList.add("changed");
+    setTimeout(()=>m.div.classList.remove("changed"),400);
+  }
+  m.state=state;
+  m.led.className="led "+state;
+  m.statusDiv.textContent=text;
+  sortPanels();
+}
+
+function createMonitor(url){
+
+  const div=document.createElement("div");
+  div.className="panel";
+
+  const left=document.createElement("div");
+  left.className="left";
+
+  const led=document.createElement("div");
+  led.className="led gray";
+
+  const text=document.createElement("div");
+  text.innerHTML=`
+    <div>${url||"(leer)"}</div>
+    <div class="status">init</div>
+    <div class="stats"></div>
+  `;
+
+  const statusDiv=text.querySelector(".status");
+  const statsDiv=text.querySelector(".stats");
+
+  left.appendChild(led);
+  left.appendChild(text);
+
+  const right=document.createElement("div");
+
+  const canvas=document.createElement("canvas");
+  canvas.width=280;
+  canvas.height=90;
+
+  const btnFav=document.createElement("button");
+  btnFav.textContent="★";
+  btnFav.disabled=!isValidURL(url);
+
+  const btnDel=document.createElement("button");
+  btnDel.textContent="✖";
+
+  right.appendChild(canvas);
+  right.appendChild(btnFav);
+  right.appendChild(btnDel);
+
+  div.appendChild(left);
+  div.appendChild(right);
+  document.getElementById("monitors").appendChild(div);
+
+  const monitor={
+    url,led,statusDiv,statsDiv,div,canvas,
+    history:[],state:"gray"
+  };
+
+  btnDel.onclick=()=>{
+    monitors=monitors.filter(x=>x!==monitor);
+    div.remove();
+    saveState();
+  };
+
+  btnFav.onclick=()=>{
+    const favs=loadFavorites();
+    if(!favs.includes(url)){
+      favs.push(url);
+      saveFavorites(favs);
+      refreshFavoritesUI();
+    }
+  };
+
+  return monitor;
+}
+
+async function checkMonitor(m){
+
+  if(!m.url){ setState(m,"gray","URL leer"); return; }
+  if(!isValidURL(m.url)){ setState(m,"blue","ungültig"); return; }
+  if(!navigator.onLine){ setState(m,"red","kein Netzwerk"); return; }
+
+  const controller=new AbortController();
+  const timeout=setTimeout(()=>controller.abort(),3000);
+  const start=performance.now();
+
+  try{
+    await fetch(m.url,{method:"GET",mode:"no-cors",
+      cache:"no-store",signal:controller.signal});
+
+    const time=Math.round(performance.now()-start);
+    m.history.push(time);
+    if(m.history.length>120) m.history.shift();
+    drawGraph(m);
+    setState(m,"green","OK "+time+" ms");
+
+  }catch(e){
+    if(e.name==="AbortError")
+      setState(m,"yellow","Timeout");
+    else
+      setState(m,"red","Netzwerkfehler");
+  }
+
+  clearTimeout(timeout);
+}
+
+function createAndStart(url){
+  const m=createMonitor(url);
+  monitors.push(m);
+  checkMonitor(m);
+  saveState();
+}
+
+function addURL(){
+  const url=document.getElementById("urlInput").value.trim();
+  document.getElementById("urlInput").value="";
+  createAndStart(url);
+}
+
+function loop(){ monitors.forEach(checkMonitor); }
+
+setInterval(loop,intervalMs);
+
+loadState();
+refreshFavoritesUI();
+
+</script>
+</body>
+</html>
