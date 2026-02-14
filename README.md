@@ -1,3 +1,3 @@
-# NOC Ultra Smart
+# NOC Ultra Smart Panel
 
 TBD
