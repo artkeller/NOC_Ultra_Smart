@@ -9,7 +9,7 @@
 
 TBD
 
-![NOC Ultra Smart Panel v4.4.11el](images/NOC_Ultra_Smart_Panel_v4_4_11.png "NOC_Ultra_Smart_Panel_v4_4_11")
+![NOC Ultra Smart Panel v4.4.11](images/NOC_Ultra_Smart_Panel_v4_4_11.png "NOC_Ultra_Smart_Panel_v4_4_11")
 
-[NOC Ultra Smart Panel v4.4.11el](https://artkeller.github.io/NOC-Ultra-Smart-Panel/noc_ultra_v4_4_11.html "NOC_Ultra_Smart_Panel_v4_4_11")
+[Live Test of NOC Ultra Smart Panel v4.4.11](https://artkeller.github.io/NOC-Ultra-Smart-Panel/noc_ultra_v4_4_11.html "Live Test of NOC Ultra Smart Panel v4.4.11")
 
