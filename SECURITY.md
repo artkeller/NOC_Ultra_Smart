@@ -1,7 +1,7 @@
 # Security Policy
 
 ## 🛡️ Cyber Resilience Act (CRA) Statement
-This project is a **non-commercial, open-source hobby project**. It is provided "as is" without any professional support or guaranteed security update cycles. According to the current understanding of the EU Cyber Resilience Act (CRA), this software is considered **exempt** as it is not part of a commercial activity.
+This project is a **non-commercial open-source project**. It is provided "as is" without any professional support or guaranteed security update cycles. According to the current understanding of the EU Cyber Resilience Act (CRA), this software is considered **exempt** as it is not part of a commercial activity.
 
 ## ⚠️ Security Status
 - **Current State:** This project is in maintenance mode.
