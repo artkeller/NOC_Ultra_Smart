@@ -79,6 +79,18 @@ Das Panel sortiert nicht nur nach Status, sondern nutzt eine gewichtete Logik f�
 
 ---
 
+## ⚠️ Wichtige Anwendungshinweise
+
+### Serverlast & Rate-Limiting
+
+Dieses Tool führt regelmäßige HTTP-Abfragen durch. Bitte beachte:
+
+* **Rate-Limiting:** Einige Anbieter (z.B. Cloudflare unter `1.1.1.1`) erkennen die hohe Frequenz der Pings als potenziellen Angriff und verweigern nach ca. 30 Sekunden die Antwort.
+* **Resistente Ziele:** Andere Dienste (z.B. Google DNS unter `8.8.8.8`) sind sehr tolerant und erlauben auch bei einer hohen Anzahl von Monitoren (30+) dauerhafte Abfragen.
+* **Verantwortung:** Nutze das Tool verantwortungsbewusst. Zu kurze Intervalle bei zu vielen Monitoren können dazu führen, dass deine IP-Adresse von Zielservern temporär gesperrt wird.
+
+---
+
 ## ⚖️ License
 
 Distributed under the **Apache License 2.0**. See `LICENSE` for more information.
