@@ -28,18 +28,15 @@ Two URLs have the same **origin** if these three characteristics are identical:
 When your **browser** makes a request to another **origin** 
 (e.g., via `fetch()` or `XMLHttpRequest`), the following process takes place: 
 
-- **The request:** The **browser** automatically adds the header 
+1. **The request:** The **browser** automatically adds the header 
 `Origin: https://your-site.com`.
-
-- **The check (preflight):** For “complex” requests (e.g., with 
+2. **The check (preflight):** For “complex” requests (e.g., with 
 `PUT`, `DELETE`, or special JSON headers), the **browser** sends an 
 `OPTIONS` request in advance. It asks the server, “Am I allowed to make this request 
 using these methods?”
-
-- **The response:** The server responds with **CORS** headers. 
+3. **The response:** The server responds with **CORS** headers. 
 The most important one is: `Access-Control-Allow-Origin: https://your-site.com` (or * for all).
-
-- **The decision:** If the server's header matches the **origin**
+4. **The decision:** If the server's header matches the **origin**
 of the website, the browser allows access. If not, 
 the **browser** blocks the response and displays a **CORS** error 
 in the console. 
