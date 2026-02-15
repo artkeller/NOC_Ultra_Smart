@@ -1,4 +1,4 @@
-# CORS explained
+# CORS (Cross-Origin Resource Sharing) explained
 
 [![Language](https://img.shields.io/badge/language-🇬🇧%20English-informational)](/LANGUAGE.md)
 
