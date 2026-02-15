@@ -6,7 +6,6 @@ This document describes the **versioning** of the project following Semantic Ver
 
 
 CHANGELOG.md
-
    ├── [v4.6.2 - Current](#v4.6.2)    
    ├── [v4.6.1](#v4.6.1)
    ├── [v4.6.0](#v4.6.0)
