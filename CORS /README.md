@@ -2,19 +2,20 @@
 
 ## 1. Das Kernkonzept: Warum gibt es CORS?
 
-Standardmäßig erzwingen **Browser** die **Same-Origin Policy (SOP)**. 
-Diese verhindert, dass Skripte von Website A (z. B. 'evil-site.com') 
-ungefragt Daten von Website B (z. B. 'mein-bank-konto.de') abrufen, 
+- Standardmäßig erzwingen **Browser** die **Same-Origin Policy (SOP)**.
+
+- Diese verhindert, dass Skripte von **Website A** (z. B. 'evil-site.com') 
+ungefragt Daten von **Website B** (z. B. 'mein-bank-konto.de') abrufen, 
 während Sie dort eingeloggt sind. 
 
-**CORS** ist die kontrollierte **Ausnahme** von dieser **Regel**. 
+- **CORS** ist die kontrollierte **Ausnahme** von dieser **Regel**. 
 
-Es erlaubt einem Server, explizit zu sagen: „Ich vertraue Anfragen 
+- Es erlaubt einem **Server**, explizit zu sagen: „Ich vertraue Anfragen 
 von 'domain-a.com' und erlaube den Zugriff auf meine Daten“. 
 
 ## 2. Was ist eine „Origin“?
 
-Zwei URLs haben dieselbe Origin, wenn diese drei Merkmale identisch sind: 
+Zwei URLs haben dieselbe **Origin**, wenn diese drei Merkmale identisch sind: 
 
     Protokoll (z. B. http vs. https)
     Domain (z. B. beispiel.de vs. api.beispiel.de)
@@ -39,11 +40,11 @@ Der wichtigste ist: *Access-Control-Allow-Origin: https://deine-seite.com'
 
 - **Die Entscheidung:** Stimmt der Header des Servers mit der **Origin** 
 der Website überein, lässt der Browser den Zugriff zu. Falls nicht, 
-blockiert der Browser die Antwort und zeigt einen 'CORS'-Fehler in der Konsole an. 
+blockiert der Browser die Antwort und zeigt einen **CORS**-Fehler in der Konsole an. 
 
 ## 4. Wichtige Fakten für Entwickler
 
-- **Browser-Sache:** **CORS** wird vom **Browser** erzwungen, nicht vom Server. 
+- **Browser-Sache:** **CORS** wird vom **Browser** erzwungen, nicht vom **Server**. 
 Tools wie 'Postman' oder 'curl' ignorieren **CORS**-Regeln komplett.
 
 - **Kein Ersatz für Authentifizierung:** CORS schützt den Nutzer davor, dass fremde Seiten in seinem Namen agieren. Es ersetzt jedoch keine API-Keys oder Logins auf dem Server.
