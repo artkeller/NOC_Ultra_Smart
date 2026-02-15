@@ -1,5 +1,7 @@
 # Sprachrichtlinie
 
+[![Language](https://img.shields.io/badge/Sprache-🇩🇪%20Deutsch-informational)](./LANGUAGE-DE.md)
+
 ## Quellcode
 
 * Der Quellcode wird in seiner ursprünglichen Form beibehalten.
@@ -22,3 +24,4 @@ Englisch wird verwendet, um Folgendes zu gewährleisten:
 ## Anwendung der Richtlinie
 
 Diese Richtlinie gilt für alle neu hinzugefügten oder geänderten Codeteile.
+
