@@ -77,7 +77,7 @@ This document describes the **versioning** of the project following Semantic Ver
   
 ---
 
-2.0.0 – Initial
+## 2.0.0
 **Date:** 2025-01-10  
 **Changes:**
 - Implementieng singele domainn monitoring.
