@@ -11,6 +11,7 @@ This document describes the **versioning** of the project following Semantic Ver
     ├── v4.6.0
     ├── v4.5.0
     ├── v4.4.11
+    ├── v4.4.2
     ├── v1.0.0 – Initial
 
 
