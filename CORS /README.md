@@ -29,7 +29,7 @@ When your **browser** makes a request to another **origin**
 (e.g., via `fetch()` or `XMLHttpRequest`), the following process takes place: 
 
 - **The request:** The **browser** automatically adds the header 
-`Origin: https://deine-seite.com`.
+`Origin: https://your-site.com`.
 
 - **The check (preflight):** For “complex” requests (e.g., with 
 `PUT`, `DELETE`, or special JSON headers), the **browser** sends an 
