@@ -35,7 +35,7 @@ In diesem Abschnitt werden die architektonischen Entscheidungen und die Bewälti
 
 ### 1. Das CORS-Paradoxon & der `no-cors` Ansatz
 
-In einer klassischen Web-Applikation verhindert die **Same-Origin-Policy (SOP)**, dass JavaScript Anfragen an fremde Domains stellt, sofern diese nicht explizit via **CORS (Cross-Origin Resource Sharing)** zugestimmt haben.
+In einer klassischen Web-Applikation verhindert die **Same-Origin-Policy (SOP)**, dass JavaScript Anfragen an fremde Domains stellt, sofern diese nicht explizit via  [**CORS (Cross-Origin Resource Sharing)**](./CORS/README-DE.md "CORS/README-DE.md"). zugestimmt haben.
 
 **Die Lösung im NOC Panel:**
 Das Panel nutzt die `fetch`-API im Modus `mode: "no-cors"`.
