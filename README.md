@@ -15,6 +15,8 @@
 
 The **NOC Ultra Smart Panel** is a high-performance tool designed for monitoring network endpoints. It provides instant visual feedback on the status of web services without the need for complex infrastructure like databases, agents, or backend servers.
 
+![NOC Ultra Smart Panel v4.4.11](images/NOC_Ultra_Smart_Panel_v4_4_11.png "NOC_Ultra_Smart_Panel_v4_4_11")
+
 ### Key Capabilities
 
 | Feature | Description |
