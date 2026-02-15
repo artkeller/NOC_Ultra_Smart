@@ -77,7 +77,7 @@ CHANGELOG.md
   
 ---
 
-## 2.0.0
+## v2.0.0
 **Date:** 2026-01-19  
 **Changes:**
 - Implementieng singele domainn monitoring.
