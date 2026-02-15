@@ -1,6 +1,6 @@
 # CORS explained
 
-[![Language](https://img.shields.io/badge/Sprache-Deutsch-informational)](./LANGUAGE-DE.md)
+[![Language](https://img.shields.io/badge/language-🇬🇧%20English-informational)](/LANGUAGE.md)
 
 ## 1. The core concept: Why does CORS exist?
 
