@@ -53,7 +53,7 @@ CHANGELOG.md
 
 ## v4.5.0
 
-**Date:** 2026-02-15  
+**Date:** 2026-02-15        
 **Changes:**
 - **Feature:** Full responsive design implementation for mobile and tablet support.
 - **UI/UX:** Replaced fixed-width containers with flexible flexbox layouts.
@@ -66,7 +66,7 @@ CHANGELOG.md
 
 ## v4.4.11
 
-**Date:** 2026-02-10 
+**Date:** 2026-02-10       
 **Changes:**
 - Improved sorting logic for IP segments and protocols.
 - Refined blink animation for red status LED.
@@ -94,7 +94,7 @@ CHANGELOG.md
 
 ## v1.0.0 – Initial
 
-**Date:** 2026-01-10  
+**Date:** 2026-01-10        
 **Changes:**
 - Initial project creation.
 - Basic serverless monitoring functionality.
@@ -102,6 +102,7 @@ CHANGELOG.md
 ---
 
 ## Versioning Notes
+
 - **Major** → incompatible changes, major restructuring  
 - **Minor** → new features, documentation updates, improvements  
 - **Patch** → small bug fixes, cosmetic changes
