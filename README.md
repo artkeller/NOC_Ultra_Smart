@@ -35,7 +35,7 @@ This section explains the architectural decisions and how modern browser restric
 
 ### 1. The CORS Paradox & the `no-cors` Approach
 
-In a standard web application, the **Same-Origin-Policy (SOP)** prevents JavaScript from making requests to foreign domains unless they explicitly agree via **CORS (Cross-Origin Resource Sharing)**. [**CORS (Cross-Origin Resource Sharing)**](CORS/README.md "CORS/README.md")
+In a standard web application, the **Same-Origin-Policy (SOP)** prevents JavaScript from making requests to foreign domains unless they explicitly agree via [**CORS (Cross-Origin Resource Sharing)**](CORS/README.md "CORS/README.md").
 
 
 **The Solution in the NOC Panel:**
