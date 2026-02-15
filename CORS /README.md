@@ -37,8 +37,7 @@ When your **browser** makes a request to another **origin**
 using these methods?”
 
 - **The response:** The server responds with **CORS** headers. 
-The most important one is: `Access-Control-Allow-Origin: https://deine-seite.com`  
-(or * for all).
+The most important one is: `Access-Control-Allow-Origin: https://your-site.com` (or * for all).
 
 - **The decision:** If the server's header matches the **origin**
 of the website, the browser allows access. If not, 
