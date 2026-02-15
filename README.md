@@ -27,8 +27,6 @@ The **NOC Ultra Smart Panel** is a high-performance tool designed for monitoring
 | **Live Analytics** | Canvas-based latency graphs for every single monitor. |
 | **Persistence** | Full configuration retention via `localStorage`. |
 
-![NOC Ultra Smart Panel v4.4.11](images/NOC_Ultra_Smart_Panel_v4_4_11.png "NOC_Ultra_Smart_Panel_v4_4_11")
-
 ---
 
 ## 🛠 Technical Deep Dive & "Seminar"
