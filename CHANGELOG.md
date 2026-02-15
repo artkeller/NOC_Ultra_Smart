@@ -20,6 +20,7 @@ CHANGELOG.md
 ---
 
 ## v4.6.2 – Current
+
 **Date:** 2026-02-15  
 **Changes:**
 - **Bugfix:** Added input validation for the URL field. The "Add Monitor" button is now disabled if the input is empty.
@@ -30,6 +31,7 @@ CHANGELOG.md
 ---
 
 ## v4.6.1
+
 **Date:** 2026-02-15  
 **Changes:**
 - **Patch:** Extended i18n support to all 24 official languages of the European Union.
@@ -38,6 +40,7 @@ CHANGELOG.md
 ---
 
 ## v4.6.0
+
 **Date:** 2026-02-15  
 **Changes:**
 - **Feature:** Full Internationalization (i18n) support for 12 major EU languages.
@@ -49,6 +52,7 @@ CHANGELOG.md
 ---
 
 ## v4.5.0
+
 **Date:** 2026-02-15  
 **Changes:**
 - **Feature:** Full responsive design implementation for mobile and tablet support.
@@ -61,6 +65,7 @@ CHANGELOG.md
 ---
 
 ## v4.4.11
+
 **Date:** 2026-02-10 
 **Changes:**
 - Improved sorting logic for IP segments and protocols.
@@ -70,6 +75,7 @@ CHANGELOG.md
 ---
 
 ## v4.0.0
+
 **Date:** 2025-02-02
 **Changes:**
 - Extension of multi-domain monitoring.
@@ -78,6 +84,7 @@ CHANGELOG.md
 ---
 
 ## v2.0.0
+
 **Date:** 2026-01-19  
 **Changes:**
 - Implementieng singele domainn monitoring.
@@ -86,6 +93,7 @@ CHANGELOG.md
 ---
 
 ## v1.0.0 – Initial
+
 **Date:** 2026-01-10  
 **Changes:**
 - Initial project creation.
