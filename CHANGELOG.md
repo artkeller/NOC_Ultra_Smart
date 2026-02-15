@@ -65,6 +65,23 @@ This document describes the **versioning** of the project following Semantic Ver
 **Changes:**
 - Improved sorting logic for IP segments and protocols.
 - Refined blink animation for red status LED.
+- Usage of favivons in favorite list.
+
+---
+
+## v4.0.0
+**Date:** 2025-02-106  
+**Changes:**
+- Extension of multi-domain monitoring.
+- LoaclStorage of favorite lis.
+  
+---
+
+2.0.0 – Initial
+**Date:** 2025-01-10  
+**Changes:**
+- Implementieng singele domainn monitoring.
+- Handling of CORS/SOP.
 
 ---
 
