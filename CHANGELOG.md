@@ -1,4 +1,16 @@
-# CHANGELOG
+# Version History / Changelog
+
+[![Language](https://img.shields.io/badge/language-🇬🇧%20English-informational)](./LANGUAGE.md)
+
+This document describes the **versioning** of the project following Semantic Versioning (SemVer).
+
+CHANGELOG.md
+├── v4.6.2 – Current
+├── v4.6.1
+├── v4.6.0
+├── v4.5.0
+├── v4.4.11
+├── v1.0.0 – Initial
 
 
 ---
@@ -21,7 +33,7 @@
 
 ---
 
-## v4.6.0 – Current
+## v4.6.0
 **Date:** 2026-02-15  
 **Changes:**
 - **Feature:** Full Internationalization (i18n) support for 12 major EU languages.
@@ -29,3 +41,38 @@
 - **Refactoring:** Replaced all hardcoded UI strings with dynamic translation variables.
 - **UI:** Translated all system messages (Network Error, Timeout, Offline, etc.).
 - **Stability:** Combined i18n with the responsive layout from v4.5.0.
+
+---
+
+## v4.5.0
+**Date:** 2026-02-15  
+**Changes:**
+- **Feature:** Full responsive design implementation for mobile and tablet support.
+- **UI/UX:** Replaced fixed-width containers with flexible flexbox layouts.
+- **UI/UX:** Added viewport meta-tags and media queries for small screens.
+- **Optimization:** Dynamic graph scaling via CSS `max-width`.
+- **Docs:** Updated README.md and README_DE.md with rate-limiting warnings and new badges.
+- **New File:** Created `SECURITY.md` (CRA-Exempt compliant).
+
+---
+
+## v4.4.11
+**Date:** 2026-02-10 
+**Changes:**
+- Improved sorting logic for IP segments and protocols.
+- Refined blink animation for red status LED.
+
+---
+
+## v1.0.0 – Initial
+**Date:** 2025-01-10  
+**Changes:**
+- Initial project creation.
+- Basic serverless monitoring functionality.
+
+---
+
+## Versioning Notes
+- **Major** → incompatible changes, major restructuring  
+- **Minor** → new features, documentation updates, improvements  
+- **Patch** → small bug fixes, cosmetic changes
