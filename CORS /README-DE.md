@@ -1,5 +1,7 @@
 # CORS erklärt
 
+[![Language](https://img.shields.io/badge/Sprache-🇩🇪%20Deutsch-informational)](./LANGUAGE-DE.md)
+
 ## 1. Das Kernkonzept: Warum gibt es CORS?
 
 - Standardmäßig erzwingen **Browser** die **Same-Origin Policy (SOP)**.
