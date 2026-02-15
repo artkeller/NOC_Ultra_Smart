@@ -76,7 +76,7 @@ CHANGELOG.md
 
 ## v4.0.0
 
-**Date:** 2025-02-02
+**Date:** 2025-02-02      	
 **Changes:**
 - Extension of multi-domain monitoring.
 - LoaclStorage of favorite lis.
