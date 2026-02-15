@@ -1,4 +1,4 @@
-# CORS explained
+# CORS erklärt
 
 ## 1. Das Kernkonzept: Warum gibt es CORS?
 
